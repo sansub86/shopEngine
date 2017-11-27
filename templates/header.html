@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+    </head>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="/js/category.js"></script>
+    <script type="text/javascript" src="/js/script.js"></script>
+    <body>
+        <header>
+            <a class="logo">Интернет магазин</a>
+            <ul>
+                {% if content_data.user == "Администратор"%}
+                    <li><a href="/admin/">Управление</a></li>
+                {% endif %}
+                <li><a href="/categories/">Каталог</a>
+                    <ul>
+                        {% for category in categories %}
+                            <li><a href="/categories/{{ category.id }}/" link="{{ category.id}}">{{ category.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="">Оплата и доставка</a></li>
+                <li><a href="">О Компании</a></li>
+                <li><a href="/basket/"><span class="glyphicon glyphicon-shopping-cart"></span> Корзина</a></li>
+                {% if content_data.user != "" %}
+                    <li><a href="/user/"><span class="glyphicon glyphicon-user"></span> Пользователь: {{ content_data.user }}</a></li>
+                    <li><a href="/user/logout/"><span class="glyphicon glyphicon-log-out"></span> Выйти</a></li>
+                {% else %}
+                    <li><a href="/user/registration/"><span class="glyphicon glyphicon-user"></span> Регистрация</a></li>
+                    <li><a href="/user/login/"><span class="glyphicon glyphicon-log-in"></span> Войти</a></li>
+                {% endif %}
+            </ul>
+        </header>
+
+
+

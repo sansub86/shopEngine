@@ -1,0 +1,12 @@
+{% include 'header.html' %}
+<h1>Управление</h1>
+<ul>
+    {% if content_data.user=='Администратор'%}
+    {% for key, control in content_data.controls %}
+        <li><a href="/index.php?path=admin&action=control&id={{key}}">{{control}}</a></li>
+    {% endfor %}
+    {% else %}
+    <p>Вы не имеете права доступа в управление сайтом</p>
+    {% endif %}
+</ul>
+{% include 'footer.html' %}

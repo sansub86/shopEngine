@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+<h1>Оформление заказа:</h1>
+{% if content_data.message %}
+<h3>{{content_data.message}}</h3>
+{% else %}
+<p>Введите ваши контакты</p>
+<form action="" method="post">
+    <label for="address-id">Адрес:</label>
+    <input type="text" name="address" id="address-id"><br>
+    <label for="phone-id">Телефон:</label>
+    <input type="text" name="phone" id="phone-id"><br>
+    <input type="button" name="" value="Отправить" onClick="order()">
+</form>
+{% endif %}
+{% include 'footer.html' %}

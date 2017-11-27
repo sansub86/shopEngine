@@ -1,0 +1,34 @@
+{% include 'header.html' %}
+<div id="catalog-data">
+    <ul>
+        {% for subcategory in content_data.subcategories %}
+        <li><a href="/categories/{{ subcategory.id}}/">{{ subcategory.name }}</a></li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="goods-data">
+    <ul>
+        {% if content_data.message %}
+            <div class="alert">{{ content_data.message }}</div>
+        {% else %}
+            {% for good in content_data.goods %}
+            <li>
+                <div class="good-item">
+                    <h4>{{ good.name }}</h4>
+                    <a href="/good/?id={{good.id}}">
+                        <img class="img-responsive img-thumbnail" src="http://placehold.it/200x200" alt="Изображение" width="200" height="200">
+                    </a>
+                    <div class="panel-footer">
+                        <h5>{{ good.price }}</h5>
+                        <p>{{ good.description }}</p>
+                        <a href="#" class="pull-right" onClick = "basket('{{good.id}}')">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+                        </a>
+                    </div>
+                </div>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+{% include 'footer.html' %}

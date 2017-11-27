@@ -1,0 +1,20 @@
+{% include 'header.html' %}
+<div class="col-sm-9">
+    <h1>Регистрация пользователя</h1>
+    {% if content_data.user != "" %}
+        <p>Добро пожаловать, {{ content_data.user }}!</p>
+    {% else %}
+    {% if content_data.message %}<div class="alert alert-danger">{{ content_data.message }}</div>{% endif %}
+    <form action="" method="post">
+        <label for="name-id">Имя пользователя:</label>
+        <input type="text" name="newname" id="name-id">
+        <label for="login-id">Логин:</label>
+        <input type="text" name="newuser" id="login-id"><br>
+        <label for="password-id">Пароль:</label>
+        <input type="password" name="newpass" id="password-id"><br>
+        <input type="submit" name="" value="Зарегистрировать">
+    </form>
+        <a href="/">В каталог</a>
+    {% endif %}
+</div>
+{% include 'footer.html' %}

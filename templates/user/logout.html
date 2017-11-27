@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+<div class="col-sm-9">
+    {% if content_data.user != "" %}
+    <p>Добро пожаловать, {{ content_data.user }}!</p>
+    {% else %}
+    <a href="/user/login/">Авторизация</a>
+    <a href="/">В каталог</a>
+    {% endif %}
+</div>
+{% include 'footer.html' %}

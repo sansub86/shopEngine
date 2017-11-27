@@ -1,0 +1,44 @@
+{% include 'header.html' %}
+<div class="col-sm-9">
+    {% if content_data.user != "" %}
+    <p>Добро пожаловать, {{ content_data.user }}!</p>
+    <h1>Мои заказы</h1>
+        {% for order in content_data.user_orders %}
+            <p>Дата заказа - {{order.date_creation}}, Номер заказа - {{order.id}}, Статус заказа - {{order.status}}</p>
+            <table>
+                <thead>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+                </thead>
+                {% for good in order.goods %}
+                <tr class="good">
+                    <td>{{good.name}}</td>
+                    <td>{{good.quantity}}</td>
+                    <td>{{good.price}}</td>
+                    <td>{{good.sum}}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td colspan="3">Итого:</td>
+                    <td>{{order.total}}</td>
+                </tr>
+            </table>
+        {% endfor %}
+    {% else %}
+    <h1>Регистрация пользователя</h1>
+
+    <form action="" method="post">
+        <label for="name-id">Имя пользователя:</label>
+        <input type="text" name="newname" id="name-id">
+        <label for="login-id">Логин:</label>
+        <input type="text" name="newuser" id="login-id"><br>
+        <label for="password-id">Пароль:</label>
+        <input type="password" name="newpass" id="password-id"><br>
+        <input type="submit" name="" value="Зарегистрировать">
+    </form>
+    {%endif%}
+    <a href="/">В каталог</a>
+</div>
+{% include 'footer.html' %}

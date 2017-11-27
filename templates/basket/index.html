@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+<h1>Корзина</h1>
+{% if content_data.message %}<h3>{{content_data.message}}</h3>
+{% else %}
+<table id="basket">
+    <thead>
+        <th>Товар</th>
+        <th>Количество</th>
+        <th>Цена</th>
+        <th>Сумма</th>
+    </thead>
+    {% for basket in content_data.basket %}
+    <tr class="good">
+        <td>{{basket[0]}}</td>
+        <td><input class="quantity" type="text" value="{{basket[1]}}"></td>
+        <td class="price">{{basket[2]}}</td>
+        <td class="sum"></td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="/order/">Оформить покупку</a>
+<button type="button" onClick = "clearBasket()">Очистить корзину</button>
+{% endif %}
+{% include 'footer.html' %}

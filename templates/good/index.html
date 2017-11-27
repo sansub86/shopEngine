@@ -1,0 +1,17 @@
+{% include 'header.html' %}
+<div class="good-item">
+    <h4>{{ content_data.good.name }}</h4>
+    <div>
+        <img class="img-responsive img-thumbnail" src="http://placehold.it/200x200" alt="Изображение" width="200" height="200">
+        <h5>Цена: {{ content_data.good.price }}</h5>
+        <h5>Описание:</h5>
+        <p>{{ content_data.good.description }}</p>
+    </div>
+    <div class="panel-footer">
+        <a href="#" class="pull-right" onClick = "basket('{{content_data.good.id}}')">
+            <span class="glyphicon glyphicon-shopping-cart"></span> Купить
+        </a>
+    </div>
+</div>
+
+{% include 'footer.html' %}
